@@ -114,35 +114,33 @@ class Guess {
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
+
         }
         if (this.guessedNumber == 1) {
             numberInWord = "one";
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
+
         }
         if (this.guessedNumber == 2) {
             numberInWord = "two";
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
+
         }
         if (this.guessedNumber == 3) {
             numberInWord = "three";
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
         }
         if (this.guessedNumber == 4) {
             numberInWord = "four";
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
         }
         if (this.guessedNumber == 5) {
             numberInWord = "five";
@@ -150,7 +148,6 @@ class Guess {
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-            this.pointsIncrease();
         }
 
         function wordCheck(wordToCheck) {
@@ -332,7 +329,6 @@ number.forEach(button => {
 })
 submit_Word.addEventListener("pointerdown", (e) => {
     e.preventDefault();
-    console.log(document.querySelector('#word').value);
     guessGame.guessWord(document.querySelector('#word').value);
 })
 document.querySelector('#submit-word-in-word').addEventListener('pointerdown', () => {

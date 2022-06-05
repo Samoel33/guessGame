@@ -114,7 +114,6 @@ class Guess {
             this.numMeaning[numberInWord].includes(word) ?
                 activeDeactive(word) :
                 tryAgain();
-
         }
         if (this.guessedNumber == 1) {
             numberInWord = "one";
@@ -327,11 +326,11 @@ number.forEach(button => {
         guessGame.guessNumber(parseInt(i.target.innerText));
     });
 })
-submit_Word.addEventListener("pointerdown", (e) => {
+submit_Word.addEventListener("click", (e) => {
     e.preventDefault();
-    guessGame.guessWord(document.querySelector('#word').value);
+    guessGame.guessWord(wordStore.value);
 })
-document.querySelector('#submit-word-in-word').addEventListener('pointerdown', () => {
+document.querySelector('#submit-word-in-word').addEventListener('click', () => {
     let wrd = wordHolder.value;
     guessGame.hiddenWords(wrd);
 })

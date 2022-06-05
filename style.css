@@ -1,0 +1,346 @@
+:root {
+    --text-font-size: 1.8rem;
+    /*COLORS */
+    --body: black;
+    --body-calculator: rgb(7, 36, 97);
+    --button-numbers: rgb(50, 129, 190);
+    --button-math: rgb(49, 83, 176);
+    --text-color: white;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: inherit;
+    font-family: sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--body);
+}
+
+.container,
+#guessNumber,
+#active,
+.hidden-Words,
+.singular-plural,
+.syllables,
+.metaphor {
+    max-width: 114rem;
+    height: 85vh;
+    margin: 0rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to left, rgba(29, 9, 9, 0.871), rgb(91, 65, 65) 90%);
+    position: relative;
+}
+
+.container {
+    height: 100vh;
+}
+
+#guessNumber {
+    height: 70vh;
+}
+
+.levels,
+.points,
+.wordsAssociated {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    z-index: 999;
+    font-size: 2rem;
+    color: white;
+}
+
+.points {
+    left: 10rem;
+}
+
+.wordsAssociated {
+    border-top: 2px solid grey;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    width: 90%;
+    top: 12.5%;
+    padding: 0.5rem;
+}
+
+.hiddenW {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+
+.hiddenWords {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.audios {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+li {
+    list-style: none;
+    color: white;
+    font-size: 1.6rem;
+    margin: 0.5rem;
+}
+
+.wordInWord-1,
+.wordInWord-2,
+.wordInWord-3,
+.wordInWord-4,
+.wordInWord-5,
+.wordInWord-6,
+.wordInWord-7,
+.wordInWord-8,
+.wordInWord-9 {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.visibleToCheck {
+    visibility: visible;
+    height: 1.6rem;
+    width: 20%;
+}
+
+#guessWord {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    opacity: 0;
+    width: 100%;
+    transition: z-index 0.8s ease-in-out, opacity 0.8s ease-in;
+}
+
+#active {
+    z-index: 100;
+    width: 50%;
+    opacity: 1;
+}
+
+#deactive {
+    z-index: -1;
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.hidden,
+.hideWord {
+    width: 80%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hideWord {
+    height: 5rem;
+}
+
+.hideWord {
+    border: 3px solid rgb(0, 195, 255);
+    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hiddenWord {
+    color: rgb(101, 220, 101);
+    font-size: 2rem;
+}
+
+.chancesTime {
+    display: flex;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chances,
+.time {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid silver;
+    margin: 1rem;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.wordLabel {
+    color: rgb(248, 248, 248);
+}
+
+input {
+    width: 100%;
+    height: 3rem;
+    padding-left: 1rem;
+    border: 2px solid rgb(40, 134, 103);
+    margin: 0.5rem;
+}
+
+.title {
+    color: var(--text-color);
+    margin: 1.5rem;
+    text-align: center;
+    border-bottom: 2px double var(--body-calculator);
+}
+
+.hideNumber {
+    border: 2px double rgba(197, 21, 21, 0.936);
+    width: 10rem;
+    height: 10rem;
+}
+
+#hiddenNumber {
+    display: none;
+}
+
+#show {
+    width: 10rem;
+    height: 10rem;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    margin-right: 1rem;
+}
+
+h3,
+h2 {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    padding-left: 0.5rem;
+    margin: 1.8rem;
+}
+
+.button-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-right: 0.1rem;
+    margin: 3rem;
+}
+
+.row button {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--button-math);
+    color: var(--text-color);
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 5rem;
+    border: 2px double silver;
+}
+
+.row button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.message {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    top: 88%;
+    left: 50%;
+    z-index: 100;
+    visibility: visible;
+}
+
+.no-is {
+    padding-left: 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: red;
+}
+
+.fail {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.greatWork {
+    color: rgb(101, 220, 101);
+    font-size: 1.5rem;
+}
+
+#play,
+#reset,
+#submit-word,
+#submit-word-in-word,
+#submit-letter,
+#submit-letter,
+#submit-meta {
+    width: 10rem;
+    height: 4rem;
+    background-color: rgb(0, 195, 255);
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: 3px solid silver;
+}
+
+#reset {
+    background-color: aqua;
+    margin: 0.5rem;
+}
+
+@media only screen and (max-width:25em) {
+    .container {
+        max-width: 100%;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+    }
+    .row {
+        width: 60%;
+    }
+    #active {
+        width: 80%;
+    }
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+}

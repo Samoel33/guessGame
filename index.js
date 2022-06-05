@@ -163,7 +163,6 @@ class Guess {
             list.innerText = wordGuessed;
             wordAssociated.appendChild(list);
             wordStore.value = '';
-
             clever.play();
             if (wordAssociated.childElementCount == 3) {
                 hinddenWord.innerText = 'Level Completed😊👏👏'

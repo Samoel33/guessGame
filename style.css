@@ -373,15 +373,18 @@ p {
         height: 100vh;
         margin: 0;
     }
+    input {
+        height: 3.5rem;
+    }
     .row {
         width: 60%;
     }
     #guessWord {
-        height: 100%;
+        height: 80%;
     }
     #active {
         width: 90%;
-        height: inherit;
+        height: 60%;
     }
     h2 {
         font-size: 1.8rem;

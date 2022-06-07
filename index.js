@@ -187,10 +187,9 @@ class Guess {
         }
     }
     hiddenWords(hiddenWord) {
-
         if (hiddenWord === "do") {
             document.querySelector('.wordInWord-1').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-0').style.textDecoration = 'line-through'
+            document.querySelector('.wordInWord-0').style.opacity = "0.2";
             wordHolder.value = "";
             this.pointsIncrease();
         } else {
@@ -437,19 +436,16 @@ resetGame.addEventListener("click", () => {
 })
 number.forEach(button => {
     button.addEventListener("click", (i) => {
-
         guessGame.guessNumber(parseInt(i.target.innerText));
     });
 })
 submit_Word.addEventListener("click", (e) => {
     e.preventDefault();
-    let wordCheck = wordStore.value;
-    wordCheck.toLowerCase();
+    const wordCheck = wordStore.value.toLowerCase();
     guessGame.guessWord(wordCheck);
 })
 document.querySelector('#submit-word-in-word').addEventListener('click', () => {
-    let wrd = wordHolder.value;
-    wrd.toLowerCase();
+    let wrd = wordHolder.value.toLowerCase();
     guessGame.hiddenWords(wrd);
 })
 document.querySelector(".hints").addEventListener("pointerdown", () => {

@@ -97,17 +97,21 @@ body {
 }
 
 li {
-    width: 13rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     color: white;
     font-size: 1.6rem;
 }
 
-.visibleToCheck {
+
+/* .visibleToCheck {
     visibility: visible;
     height: 1.6rem;
     width: 20%;
-}
+} */
 
 #guessWord {
     position: absolute;
@@ -211,7 +215,7 @@ input {
 }
 
 #hiddenNumber {
-    display: none;
+    /* display: none; */
 }
 
 #show {

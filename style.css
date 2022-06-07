@@ -34,7 +34,6 @@ body {
 .syllables,
 .metaphor {
     max-width: 114rem;
-    /* height: 85vh; */
     margin: 0rem auto;
     display: flex;
     flex-direction: column;
@@ -102,24 +101,7 @@ li {
     list-style: none;
     color: white;
     font-size: 1.6rem;
-    /* margin-right: 1.5rem; */
 }
-
-
-/* .wordInWord-1,
-.wordInWord-2,
-.wordInWord-3,
-.wordInWord-4,
-.wordInWord-5,
-.wordInWord-6,
-.wordInWord-7,
-.wordInWord-8,
-.wordInWord-9 {
-    visibility: hidden;
-    width: 0;
-    height: 0;
-    transition: width 0.8s ease-out, transform 0.8s ease-in-out;
-} */
 
 .visibleToCheck {
     visibility: visible;
@@ -163,7 +145,6 @@ li {
 }
 
 .hideWord {
-    /*border: 3px solid rgb(0, 195, 255);*/
     margin-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }

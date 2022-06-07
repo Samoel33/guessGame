@@ -53,10 +53,11 @@
             </div>
         </div>
         <div id="guessWord">
-            <div class="wordsAssociated">
-
+            <div class="group">
+                <label for="guesses">Guess only 3</label>
+                <div class="guesses"></div>
             </div>
-            <h2>Word associated with the guessed No <span class="no-is"></span> 🤔</h2>
+            <h2>Word associated/meaning with the guessed No <span class="no-is"></span> <span class="hint">Hint?</span> 🤔</h2>
             <div class="hidden hideWord">
                 <div class="hiddenWord"></div>
             </div>
@@ -69,16 +70,16 @@
         <div class="hidden-Words" id="hiddenNumber">
             <h4>If Word is correct, the word will have a line through</h4>
             <div class="hiddenWords">
-                <li class="wordInWord-0">Dog</li>
-                <li class="wordInWord-1">Cat</li>
-                <li class="wordInWord-2">Box</li>
-                <li class="wordInWord-3">Seperate</li>
-                <li class="wordInWord-4">Cottage</li>
-                <li class="wordInWord-5">House</li>
-                <li class="wordInWord-6">Cage</li>
-                <li class="wordInWord-7">Table</li>
-                <li class="wordInWord-8">Friend</li>
-                <li class="wordInWord-9">Conscinece</li>
+                <li class="wordInWord-0 wordHiden">Dog</li>
+                <li class="wordInWord-1 wordHiden">Cat</li>
+                <li class="wordInWord-2 wordHiden">Box</li>
+                <li class="wordInWord-3 wordHiden">Seperate</li>
+                <li class="wordInWord-4 wordHiden">Cottage</li>
+                <li class="wordInWord-5 wordHiden">House</li>
+                <li class="wordInWord-6 wordHiden">Cage</li>
+                <li class="wordInWord-7 wordHiden">Table</li>
+                <li class="wordInWord-8 wordHiden">Friend</li>
+                <li class="wordInWord-9 wordHiden">Conscinece</li>
             </div>
             <div class="group">
                 <label for="word" class="wordLabel">Give the word hidden in each word above</label>
@@ -124,6 +125,10 @@
         </div>
         <button id="play">Play</button>
         <button id="reset" disabled>Restart</button>
+    </div>
+    <div class="hints">
+        <div class="close">X</div>
+        <p>Words to guess can be from: Maths Shapes, angel numbers, Numbers and Bible</p>
     </div>
     <script src="./index.js"></script>
 </body>

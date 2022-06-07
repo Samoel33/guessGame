@@ -36,6 +36,7 @@ const wordHolder = document.querySelector('.wordInWord');
 let wordStore = document.querySelector("#word");
 let pointsEarned = 0;
 let timeOver;
+let guesses = 0
 class Guess {
     constructor(number, word) {
         this.number = number;
@@ -61,7 +62,7 @@ class Guess {
                 fail.innerText = "";
                 resetGame.removeAttribute("disabled");
                 better.pause();
-            }, 3700);
+            }, 3100);
         }
     }
     guessNumber(number) {
@@ -155,12 +156,12 @@ class Guess {
 
         function activeDeactive(wordGuessed) {
             hinddenWord.innerText = "Very Clever 👍";
-            let list = document.createElement('li')
-            list.innerText = wordGuessed;
-            wordAssociated.appendChild(list);
+            guesses++
+            document.querySelector(".guesses").innerText = guesses;
             wordStore.value = '';
+            console.log(guesses);
             clever.play();
-            if (wordAssociated.childElementCount == 3) {
+            if (document.querySelector('.guesses').innerText === '3') {
                 hinddenWord.innerText = 'Level Completed😊👏👏'
                 setTimeout(() => {
                     hidden_words.setAttribute("id", "active");
@@ -192,39 +193,83 @@ class Guess {
             document.querySelector('.wordInWord-0').style.textDecoration = 'line-through'
             wordHolder.value = "";
             this.pointsIncrease();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
         if (hiddenWord === "at") {
-            document.querySelector('.wordInWord-2').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-1').style.textDecoration = 'line-through'
+            document
+                .querySelector(".wordInWord-2")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-1").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
         if (hiddenWord === "ox") {
-            document.querySelector('.wordInWord-3').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-2').style.textDecoration = 'line-through'
+            document
+                .querySelector(".wordInWord-3")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-2").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
         if (hiddenWord === "rat" || hiddenWord === "rate") {
-            document.querySelector('.wordInWord-4').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-3').style.textDecoration = 'line-through'
+            document
+                .querySelector(".wordInWord-4")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-3").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
 
-        if (hiddenWord === 'cot' || hiddenWord === 'tag') {
-            document.querySelector('.wordInWord-5').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-4').style.textDecoration = 'line-through'
+        if (hiddenWord === "cot" || hiddenWord === "tag") {
+            document
+                .querySelector(".wordInWord-5")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-4").style.textDecoration =
+                "line-through";
+            wordHolder.value = "";
+            this.pointsIncrease();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
+        }
+        if (hiddenWord === "us" || hiddenWord === "use") {
+            document
+                .querySelector(".wordInWord-6")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-5").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
 
-        }
-        if (hiddenWord === 'us' || hiddenWord === "use") {
-            document.querySelector('.wordInWord-6').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-5').style.textDecoration = 'line-through'
-            wordHolder.value = "";
-            this.pointsIncrease();
-            return;
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
 
         if (hiddenWord === 'age') {
@@ -232,31 +277,54 @@ class Guess {
             document.querySelector('.wordInWord-6').style.textDecoration = 'line-through'
             wordHolder.value = "";
             this.pointsIncrease();
-            return;
-        }
-        if (hiddenWord === 'able' || hiddenWord === "tab") {
-            document.querySelector('.wordInWord-8').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-7').style.textDecoration = 'line-through'
-            wordHolder.value = "";
-            this.pointsIncrease();
 
         }
-
-        if (hiddenWord === 'end') {
-            document.querySelector('.wordInWord-9').classList.add('visibleToCheck');
-            document.querySelector('.wordInWord-8').style.textDecoration = 'line-through'
+        if (hiddenWord === "able" || hiddenWord === "tab") {
+            document
+                .querySelector(".wordInWord-8")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-7").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
-
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
-        if (hiddenWord === 'science') {
-            document.querySelector('.wordInWord-9').style.textDecoration = 'line-through'
+
+        if (hiddenWord === "end") {
+            document
+                .querySelector(".wordInWord-9")
+                .classList.add("visibleToCheck");
+            document.querySelector(".wordInWord-8").style.textDecoration =
+                "line-through";
             wordHolder.value = "";
             this.pointsIncrease();
-            clever.play();
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
+        }
+        if (hiddenWord === "science") {
+            document.querySelector(".wordInWord-9").style.textDecoration =
+                "line-through";
+            wordHolder.value = "";
+            this.pointsIncrease();
+            completed.play();
             setTimeout(() => {
                 clever.pause();
-            }, 2000);
+                guessNumber.setAttribute("id", "active");
+                hidden_words.setAttribute("id", "deactive");
+                location.reload();
+            }, 6700);
+        } else {
+            tryIt.play();
+            setTimeout(() => {
+                tryIt.pause();
+            }, 3000);
         }
 
     }
@@ -275,12 +343,58 @@ class Guess {
         chances.innerText = " ";
         timing.innerText = " ";
         this.numMeaning = {
-            zero: ["absent", "null", "none", "ziltch", "void", "nothing", "nought"],
-            one: ["unity", "one", "single", "alone", "love"],
-            two: ["union", "double", "couple", "love", "trust", "duality"],
-            three: ["three", "triple", "third", "cheerful", "beginnings"],
-            four: ["four", "quart", "fourth", "eve", "stability"],
-            five: ["love", "fifth", "loyalty", "marriage"],
+            zero: [
+                "absent",
+                "null",
+                "ellipse",
+                "ziltch",
+                "circle",
+                "void",
+                "nothing",
+                "nought",
+                "beginnings",
+                "nadir",
+            ],
+            one: ["unity", "one", "circle", "single", "alone", "love", "sole", "specific", "solitary"],
+            two: [
+                "union",
+                "double",
+                "couple",
+                "love",
+                "trust",
+                "duality",
+                "amphibian",
+                "binary",
+                "diploid",
+            ],
+            three: [
+                "three",
+                "triple",
+                "third",
+                "cheerful",
+                "beginnings",
+                "triangle",
+                "threesome",
+                "trine",
+            ],
+            four: [
+                "four",
+                "quart",
+                "fourth",
+                "eve",
+                "stability",
+                "kite",
+                "rectangle",
+                "rhombus",
+            ],
+            five: [
+                "love",
+                "fifth",
+                "loyalty",
+                "marriage",
+                "pentagon",
+                "quinate",
+            ],
         };
         this.syllables = {
             syllables: [
@@ -295,7 +409,7 @@ class Guess {
 
         };
         this.syllable = [];
-        this.hiddenWord = [];
+        this.hiddenWo = [];
         setTimeout(() => {
             resetGame.disabled = true;
         }, 1000);
@@ -323,14 +437,30 @@ resetGame.addEventListener("click", () => {
 })
 number.forEach(button => {
     button.addEventListener("click", (i) => {
+
         guessGame.guessNumber(parseInt(i.target.innerText));
     });
 })
 submit_Word.addEventListener("click", (e) => {
     e.preventDefault();
-    guessGame.guessWord(wordStore.value);
+    let wordCheck = wordStore.value;
+    wordCheck.toLowerCase();
+    guessGame.guessWord(wordCheck);
 })
 document.querySelector('#submit-word-in-word').addEventListener('click', () => {
     let wrd = wordHolder.value;
+    wrd.toLowerCase();
     guessGame.hiddenWords(wrd);
+})
+document.querySelector(".hints").addEventListener("pointerdown", () => {
+    document.querySelector(".hints").classList.remove("show");
+    document.querySelector(".hints").classList.add("closed");
+});
+document.querySelector(".hint").addEventListener('pointerdown', () => {
+    document.querySelector(".hints").classList.add("show");
+    document.querySelector(".hints").classList.remove("closed");
+})
+document.querySelector(".close").addEventListener("pointerdown", () => {
+    document.querySelector(".hints").classList.add('closed');
+    document.querySelector(".hints").classList.remove('show');
 })

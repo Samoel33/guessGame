@@ -106,13 +106,6 @@ li {
     font-size: 1.6rem;
 }
 
-
-/* .visibleToCheck {
-    visibility: visible;
-    height: 1.6rem;
-    width: 20%;
-} */
-
 #guessWord {
     position: absolute;
     top: 0;
@@ -215,7 +208,7 @@ input {
 }
 
 #hiddenNumber {
-    /* display: none; */
+    display: none;
 }
 
 #show {

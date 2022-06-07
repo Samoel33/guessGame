@@ -44,6 +44,15 @@ body {
     position: relative;
 }
 
+#guessNumber,
+#active,
+.hidden-Words,
+.singular-plural,
+.syllables,
+.metaphor {
+    z-index: 999;
+}
+
 .container {
     height: 100vh;
 }
@@ -58,7 +67,6 @@ body {
     position: absolute;
     top: 2rem;
     left: 1rem;
-    z-index: 999;
     font-size: 2rem;
     color: white;
 }

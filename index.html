@@ -11,22 +11,26 @@
 
 <body>
     <div class="container">
-        <div class="audios">
-            <audio src="./aud/betterLuck.mp3" type="audio/mp3" class="better"></audio>
-            <audio src="./aud/completed.mp3" type="audio/mp3" class="completed"></audio>
-            <audio src="./aud/guessedIt.mp3" type="audio/mp3" class="guessedIt"></audio>
-            <audio src="./aud/tryAgain.mp3" type="audio/mp3" class="try"></audio>
-            <audio src="./aud/veryClever.mp3" type="audio/mp3" class="clever"></audio>
+        <div class="gameOver">
+            Game Over☹️
         </div>
-        <div class="levels">Level: <span class="level">1</span></div>
-        <div class="points">Points: <span class="val">0</span></div>
-        <div class="displayWinLose"></div>
-        <div id="guessNumber">
-            <h2>Guess the Number🤔</h2>
-            <div class="message">
-                <div class="fail"></div>
-                <div class="greatWork"></div>
+        <nav>
+            <div class="navigation">
+                <div class="audios">
+                    <audio src="./aud/betterLuck.mp3" type="audio/mp3" class="better"></audio>
+                    <audio src="./aud/completed.mp3" type="audio/mp3" class="completed"></audio>
+                    <audio src="./aud/guessedIt.mp3" type="audio/mp3" class="guessedIt"></audio>
+                    <audio src="./aud/tryAgain.mp3" type="audio/mp3" class="try"></audio>
+                    <audio src="./aud/veryClever.mp3" type="audio/mp3" class="clever"></audio>
+                </div>
+                <div class="levels">Level: <span class="level">1</span></div>
+                <div class="displayWinLose"></div>
+                <button id="play">Play</button>
+                <button id="reset" disabled>Restart</button>
             </div>
+        </nav>
+        <div id="guessNumber" class="slide">
+            <h2>Guess the Number🤔</h2>
             <div class="hidden">
                 <div class="hideNumber">
                     <div id="hiddenNumber"></div>
@@ -41,6 +45,7 @@
                         <div class="time"></div>
                     </div>
                 </div>
+
             </div>
             <div class="buttons row">
                 <button id="num" disabled>0</button>
@@ -49,88 +54,78 @@
                 <button id="num" disabled>3</button>
                 <button id="num" disabled>4</button>
                 <button id="num" disabled>5</button>
+                <button id="num" disabled>6</button>
+                <button id="num" disabled>7</button>
+                <button id="num" disabled>8</button>
+                <button id="num" disabled>9</button>
+                <button id="num" disabled>10</button>
+                <button id="num" disabled>.</button>
+            </div>
+            <div class="message">
+                <div class="fail"></div>
+            </div>
+            <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div id="guessWord" class="slide">
+            <h2 class="heading-word">synonyms meanig for :<span class="no-is"></span> <span class="hint" title="Words from shapes,angels number,Bible and Number itself">Hint?</span> 🤔</h2>
+            <h3>Guess <span class="guessThese">5</span> togo to the next level, You guessed: <span class="got">0</span></h5>
+                <div class="correct_not"></div>
+                <div class="group-word">
+                    <label class="wordLabel" for="word">Enter the Word</label>
+                    <input type="text" placeholder="Type in a word" id="word">
+                </div>
+                <button id="submit-word">Submit</button>
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+        </div>
+        <div id="hidden-Words" class="slide">
+            <h2>Hidden Word in a Word guess 3
+                <span class="emoji">😉</span>
+            </h2>
+            <div class="hiddenWords">
 
             </div>
-        </div>
-        <div id="guessWord">
-            <div class="group">
-                <label for="guesses">Guess only 3</label>
-                <div class="guesses"></div>
-            </div>
-            <h2>Word associated/meaning with the guessed No <span class="no-is"></span> <span class="hint">Hint?</span> 🤔</h2>
-            <div class="hidden hideWord">
-                <div class="hiddenWord"></div>
-            </div>
-            <div class="group">
-                <label class="wordLabel" for="word">Enter the Word</label>
-                <input type="text" placeholder="Type in a word" id="word">
-            </div>
-            <button id="submit-word">Submit</button>
-        </div>
-        <div class="hidden-Words" id="hiddenNumber">
-            <h4>If Word is correct, the word will have a line through</h4>
-            <div class="hiddenWords">
-                <li class="wordInWord-0 wordHiden">Dog</li>
-                <li class="wordInWord-1 wordHiden">Cat</li>
-                <li class="wordInWord-2 wordHiden">Box</li>
-                <li class="wordInWord-3 wordHiden">Seperate</li>
-                <li class="wordInWord-4 wordHiden">Cottage</li>
-                <li class="wordInWord-5 wordHiden">House</li>
-                <li class="wordInWord-6 wordHiden">Cage</li>
-                <li class="wordInWord-7 wordHiden">Table</li>
-                <li class="wordInWord-8 wordHiden">Friend</li>
-                <li class="wordInWord-9 wordHiden">Conscinece</li>
-            </div>
-            <div class="group">
-                <label for="word" class="wordLabel">Give the word hidden in each word above</label>
+            <div class="group-word">
+                <label for="word" class="word-word-label">Word in a Word</label>
                 <input type="text" placeholder="Type in your word" class="wordInWord">
             </div>
             <button id="submit-word-in-word">Submit</button>
+            <div class="levelCompleted"></div>
         </div>
-        <div class="singular-plural" id="hiddenNumber">
-            <div class="letter">
-                <li>Knife</li>
-                <li>Life</li>
-                <li>Half</li>
-                <li>Wife</li>
-                <li>Self</li>
-                <li>Leaf</li>
+        <div class="slide" id="singularPlural">
+            <h2 class="heading-word">Change Singular to Plural
+                <span class="emoji">😉</span>
+            </h2>
+            <div class="letter ">
+
             </div>
-            <div class="group">
-                <label for="word" class="wordLabel">construct your Sentence</label>
-                <input type="text" placeholder="Type in your sentence">
+            <div class="group-word ">
+                <label for="word " class="wordLabel ">Change word to plural</label>
+                <input type="text " placeholder="Type in your answer " class="twoLetters">
             </div>
             <button id="submit-letter">Submit</button>
         </div>
-        <div class="syllables" id="hiddenNumber">
-            <div class="hiddenW">
-                <li>Dog</li>
-                <li>Cat</li>
-                <li>Box</li>
-                <li>Seperate</li>
-                <li>Cottage</li>
+        <div class="syllables slide " id="hiddenNumber ">
+            <div class="hiddenW ">
+
             </div>
-            <div class="group">
-                <label for="word" class="wordLabel">construct your Sentence</label>
-                <input type="number" placeholder="Type in your sentence">
+            <div class="group ">
+                <label for="word " class="wordLabel ">construct your Sentence</label>
+                <input type="number " placeholder="Type in your sentence ">
             </div>
-            <button id="submit-number">Submit</button>
+            <button id="submit-number ">Submit</button>
         </div>
-        <div class="metaphor" id="hiddenNumber">
-            <div class="group">
-                <label for="word" class="wordLabel">construct your Sentence</label>
-                <input type="text" placeholder="Type in your sentence">
-            </div>
-            <button id="submit-meta">Submit</button>
-        </div>
-        <button id="play">Play</button>
-        <button id="reset" disabled>Restart</button>
+        <!-- <div class="hints ">
+            <div class="close ">X</div>
+            <p>Words to guess can be from: Maths Shapes, angel numbers, Numbers and Bible</p>
+        </div> -->
     </div>
-    <div class="hints">
-        <div class="close">X</div>
-        <p>Words to guess can be from: Maths Shapes, angel numbers, Numbers and Bible</p>
-    </div>
-    <script src="./index.js"></script>
+    <script src="./index.js "></script>
 </body>
 
 </html>

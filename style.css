@@ -1,11 +1,14 @@
 :root {
-    --text-font-size: 1.8rem;
-    /*COLORS */
-    --body: black;
-    --body-calculator: rgb(7, 36, 97);
-    --button-numbers: rgb(50, 129, 190);
-    --button-math: rgb(49, 83, 176);
-    --text-color: white;
+    --guessing-number: rgb(147, 83, 83);
+    --navigation: #F4ABA9;
+    --button: #f0f0f0;
+    --guessing-word: rgb(121, 119, 119);
+    --hidden-word: white;
+    --body-color: silver;
+    --heading-size: 2.5rem;
+    --body-text-size: 1.5rem;
+    --button-text-size: 1.8rem;
+    --hints-text-size: 1.5rem;
 }
 
 *,
@@ -22,377 +25,350 @@ html {
     font-size: 62.5%;
 }
 
+@media only screen and (max-width:25em) {
+    html {
+        font-size: 50%;
+    }
+}
+
 body {
-    background-color: var(--body);
-}
-
-.container,
-#guessNumber,
-#active,
-.hidden-Words,
-.singular-plural,
-.syllables,
-.metaphor {
-    max-width: 114rem;
-    margin: 0rem auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(to left, rgba(29, 9, 9, 0.871), rgb(91, 65, 65) 90%);
-    position: relative;
-}
-
-#guessNumber,
-#active,
-.hidden-Words,
-.singular-plural,
-.syllables,
-.metaphor {
-    z-index: 999;
+    background-color: var(--body-color);
+    overflow: hidden;
 }
 
 .container {
-    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 
-#guessNumber {
-    height: 70vh;
+nav {
+    padding-top: 1.5rem;
+    max-width: 114rem;
+    height: 5vh;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--navigation);
+}
+
+.navigation {
+    position: fixed;
+    z-index: 2;
+    max-width: 114rem;
+    height: 5vh;
+    margin: 0 auto;
+    background-color: var(--navigation);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#play,
+#reset {
+    width: 7rem;
+    height: 3rem;
+    margin: 0.5rem;
+    background-color: var(--button);
+    border: 2px solid var(--guessing-number);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+#reset {
+    background-color: var(--hidden-word);
 }
 
 .levels,
-.points,
-.wordsAssociated {
-    position: absolute;
-    top: 2rem;
-    left: 1rem;
-    font-size: 2rem;
-    color: white;
-}
-
 .points {
-    left: 10rem;
+    font-size: var(--button-text-size);
+    color: var(--guessing-number);
+    margin: 0.5rem;
 }
 
-.hiddenW {
+
+/* GUESSING Game Styling */
+
+#guessNumber,
+#guessWord,
+#hidden-Words,
+#singularPlural {
+    max-width: 114rem;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: var(--guessing-number);
+}
+
+
+/* 
+.translatedUp {
+    transform: translateY(-110vh);
+    opacity: 0;
+    transition: transform 0.8s ease-in-out;
+}
+
+.translateToView {
+    transform: translateY(-105vh);
+    transition: transform 0.8s ease-in-out;
+} */
+
+h2 {
+    padding-top: 3rem;
+    text-align: center;
+    color: var(--hidden-word);
+    font-size: var(--heading-size);
+    margin-bottom: 2rem;
+}
+
+.hidden {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid red;
-}
-
-.hiddenWords {
-    display: flex;
-    flex-wrap: wrap;
-    height: 10vh;
-    width: 100%;
-    margin: 2rem;
-    padding: 0.5rem;
-}
-
-.audios {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-li {
-    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    list-style: none;
-    color: white;
-    font-size: 1.6rem;
+    margin-bottom: 2rem;
 }
 
-#guessWord {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    opacity: 0;
-    width: 100%;
-    transition: z-index 0.8s ease-in-out, opacity 0.8s ease-in;
-}
-
-#active {
-    z-index: 100;
-    width: 50%;
-    opacity: 1;
-}
-
-#deactive {
-    z-index: -1;
-    height: 0;
-    width: 0;
-    opacity: 0;
-}
-
-.hidden,
-.hideWord {
-    width: 80%;
+.hideNumber {
+    width: 10rem;
     height: 10rem;
+    border: 3px double grey;
+}
+
+#hiddenNumber {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hideWord {
-    height: 5rem;
-}
-
-.hideWord {
-    margin-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.hiddenWord {
-    color: rgb(101, 220, 101);
-    font-size: 2rem;
+    font-size: var(--heading-size);
+    color: var(--hidden-word);
+    height: 100%;
+    display: none;
 }
 
 .chancesTime {
+    width: 20rem;
     display: flex;
-}
-
-.group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-}
-
-.chances,
-.time,
-.guesses {
-    width: 5rem;
-    height: 5rem;
-    border: 1px solid silver;
-    margin: 1rem;
-    color: var(--text-color);
-    font-size: 2.5rem;
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 label {
-    font-size: 1.5rem;
-    color: var(--text-color);
+    color: var(--hidden-word);
+    font-size: var(--body-text-size);
+    margin-bottom: 1rem;
 }
 
-.wordLabel {
-    color: rgb(248, 248, 248);
-}
-
-input {
-    width: 100%;
-    height: 3rem;
-    padding-left: 1rem;
-    border: 2px solid rgb(40, 134, 103);
-    margin: 0.5rem;
-}
-
-.title {
-    color: var(--text-color);
-    margin: 1.5rem;
-    text-align: center;
-    border-bottom: 2px double var(--body-calculator);
-}
-
-.hideNumber {
-    border: 2px double rgba(197, 21, 21, 0.936);
-    width: 10rem;
-    height: 10rem;
-}
-
-#hiddenNumber {
-    display: none;
-}
-
-#show {
-    width: 10rem;
-    height: 10rem;
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 6rem;
-    margin-right: 1rem;
-}
-
-h3,
-h2 {
-    color: var(--text-color);
-    font-size: 2.5rem;
-    padding-left: 0.5rem;
-    margin: 1.8rem;
-}
-
-.button-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-    padding-right: 0.1rem;
-    margin: 3rem;
-}
-
-.row button {
+.time,
+.chances {
     width: 5rem;
     height: 5rem;
+    border: 2px solid white;
+    font-size: var(--button-text-size);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--button-math);
-    color: var(--text-color);
-    margin: 0.5rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 5rem;
-    border: 2px double silver;
-}
-
-.row button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--hidden-word);
 }
 
 .message {
-    position: absolute;
-    transform: translate(-50%, 50%);
-    top: 88%;
-    left: 50%;
-    z-index: 100;
-    visibility: visible;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.no-is {
-    padding-left: 1rem;
-    text-align: center;
-    font-size: 2.5rem;
-    color: red;
+.row {
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding-left: 2rem;
 }
 
-.fail {
-    color: red;
-    font-size: 1.5rem;
+#num {
+    width: 8rem;
+    height: 5rem;
+    font-size: var(--heading-size);
+    color: black;
+    background-color: var(--button);
+    cursor: pointer;
 }
 
-.greatWork {
-    color: rgb(101, 220, 101);
-    font-size: 1.5rem;
+#num:hover {
+    background-color: var(--navigation);
 }
 
-#play,
-#reset,
-#submit-word,
-#submit-word-in-word,
-#submit-letter,
-#submit-letter,
-#submit-meta {
-    width: 10rem;
-    height: 4rem;
-    background-color: rgb(0, 195, 255);
-    font-size: 2rem;
-    border-radius: 1rem;
-    border: 3px solid silver;
+.dots {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#reset {
-    background-color: aqua;
-    margin: 0.5rem;
+.dot {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--navigation);
+    margin-top: 3rem;
+    margin-right: 1rem;
+    /* transform: translateY(0); */
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
+}
+
+.slide {
+    transition: transform 0.8s ease-in-out;
+}
+
+.dot:nth-child(1) {
+    animation: bounce 3s ease-out infinite;
+}
+
+.dot:nth-child(2) {
+    animation: bounce 3s ease-out infinite 1s;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2rem);
+        animation-timing-function: ease-in;
+    }
+}
+
+
+/*GUEESING WORD*/
+
+#guessWord,
+#hidden-Words,
+#singularPlural {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--hidden-word);
+}
+
+.heading-word {
+    color: black
 }
 
 .hint {
-    color: rgb(18, 143, 205);
+    color: blue;
     text-decoration: underline;
-    font-size: 1.8rem;
 }
 
-.hints {
-    width: 0;
-    position: absolute;
-    top: -1%;
-    display: none;
+h3 {
+    text-align: center;
+}
+
+.group-word {
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -3;
-    background-color: rgba(0, 0, 0, 0.504);
+    flex-direction: column;
+    margin-top: 1rem;
 }
 
-#word {
-    width: 100%;
+.wordLabel {
+    color: black;
+}
+
+#word,
+.wordInWord,
+.twoLetters {
+    width: 20rem;
+    height: 3.5rem;
+    border: 2px solid var(--guessing-number);
+    padding-left: 1rem;
+}
+
+#submit-word,
+#submit-word-in-word,
+#submit-letter {
+    border-radius: 1rem;
+    width: 10rem;
     height: 3rem;
+    margin-top: 1.5rem;
+    color: var(--navigation);
+    font-size: var(--button-text-size);
+    background-color: var(--guessing-number);
+    border: 2px solid var(--navigation);
 }
 
-.show {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    z-index: 10000;
-    transition: width 0.8s ease-in-out;
+.correct_not,
+.levelCompleted,
+.fail {
+    width: 20rem;
+    margin: 1rem;
+    color: green;
+    font-size: var(--body-text-size);
 }
 
-.close {
-    color: white;
+.got,
+.no-is {
+    color: red;
     font-size: 2rem;
-    background-color: rgb(49, 12, 12);
+    border: 2px solid var(--guessing-number);
+    padding: 0.2rem;
 }
 
-.closed {
-    transition: opacity 0.8s ease-in-out;
+.guessThese {
+    color: red;
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+
+/*HIDDEN WORD IN A WORD*/
+
+#hidden-Words {
+    background-color: var(--guessing-number);
+}
+
+.hiddenWords,
+.letter {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(218, 57, 57);
+    font-weight: 900;
+    font-size: var(--button-text-size);
+    background-color: white;
+}
+
+.word-word-label {
+    color: var(--hidden-word);
+}
+
+#submit-word-in-word {
+    background-color: var(--hidden-word);
+    color: black;
+}
+
+.gameOver {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.8s ease-in-out;
+    color: red;
+    font-size: 3rem;
+    background-color: black;
+    padding: 2rem;
+    z-index: 3;
     display: none;
 }
 
-p {
-    font-size: 1.8rem;
-    max-width: 25ch;
-    color: white;
-    line-height: 150%;
-    background-color: black;
-}
-
-#slideOut {
-    transform: translateX(200%);
-    width: 0;
-}
-
-@media only screen and (max-width:25em) {
-    .container {
-        max-width: 100%;
-        width: 100%;
-        height: 100vh;
-        margin: 0;
-    }
-    input {
-        height: 3.5rem;
-    }
-    .row {
-        width: 60%;
-    }
-    #guessWord {
-        height: 80%;
-    }
-    #active {
-        width: 90%;
-        height: 60%;
-    }
-    h2 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
-    .group {
-        width: 100%;
-    }
-    .hints {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+.big {
+    transform: scale(3);
+    display: flex;
 }

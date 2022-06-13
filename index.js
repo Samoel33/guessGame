@@ -197,7 +197,7 @@ class WordInWord extends GuessWord {
             this.randomNumber == 10 ||
             this.randomNumber == 11
         ) {
-            if (this.arrayAnswers[this.randomNumber].includes(this.hiddenWord)) {
+            if (arrayAnswers[this.randomNumber].includes(this.hiddenWord)) {
                 this.countClever();
             }
             // let hidd = this.hiddenWord;

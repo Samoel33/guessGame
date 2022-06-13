@@ -41,7 +41,7 @@ class GuessWord {
     }
     async fetchData() {
         try {
-            let res = await fetch("/words.json")
+            let res = await fetch("words.json")
             return await res.json();
         } catch (err) {
 

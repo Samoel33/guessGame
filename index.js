@@ -41,7 +41,9 @@ class GuessWord {
     }
     async fetchData() {
         try {
-            let res = await fetch("./words.json")
+            let res = await fetch(
+                "https://samoel33.github.io/guessGame/words.json"
+            );
             return await res.json();
         } catch (err) {
 

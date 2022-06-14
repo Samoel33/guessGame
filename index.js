@@ -22,11 +22,6 @@ const chancesDown = document.querySelector('.chances');
 const wordCheck = document.querySelector("#word");
 
 
-
-
-
-
-
 class GuessWord {
     constructor(number, word) {
         this.number = number;
@@ -88,9 +83,6 @@ class GuessWord {
             tryIt.pause();
         }, 3000);
     }
-
-
-
     betterLuck() {
         better.play();
         document.querySelector(".gameOver").classList.add("big");
@@ -110,7 +102,6 @@ class SingularPlural extends GuessWord {
     async randomNumber1() {
         this.randomNum = Math.floor(Math.random() * 5);
         let plural = await this.fetchData();
-        console.log(plural);
         document.querySelector('.letter').innerText = plural.singularPlural[this.randomNum];
     }
     toPlural(pluralWord) {
@@ -331,10 +322,11 @@ buttons.forEach((button) => {
 });
 
 submitWord.addEventListener("pointerdown", () => {
-    guessWord.wordAssociation(document.querySelector("#word").value);
+    let lowCase = document.querySelector("#word");
+    const val = lowCase.value.toLowerCase();
+    guessWord.wordAssociation(val);
 })
 submit_Word_in_word.addEventListener("pointerdown", () => {
-
     hideWord.giveWordInWord(document.querySelector(".wordInWord").value);
 });
 changeToPlural.addEventListener("pointerdown", () => {

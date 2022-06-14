@@ -40,10 +40,9 @@ class GuessWord {
         this.j = -100;
     }
     async fetchData() {
+        const url = "https://samoel33.github.io/guessGame/words.json";
         try {
-            let res = await fetch(
-                "https://samoel33.github.io/guessGame/words.json"
-            );
+            let res = await fetch(url);
             return await res.json();
         } catch (err) {
 
@@ -197,22 +196,16 @@ class WordInWord extends GuessWord {
             this.randomNumber == 10 ||
             this.randomNumber == 11
         ) {
-            if (arrayAnswers[this.randomNumber].includes(this.hiddenWord)) {
+            const nested = arrayAnswers[this.randomNumber];
+            if (nested.includes(this.hiddenWord)) {
                 this.countClever();
             }
-            // let hidd = this.hiddenWord;
-            // let filtered = arrayAnswers[this.randomNumber].filter(hid);
-            // if (filtered) {
-            //     this.countClever();
-            // }
-            // function hid(wordHidden) {
-            //     return wordHidden === hidd;
-            // }
-        }
-        if (answer.includes(this.hiddenWord)) {
-            this.countClever()
         } else {
-            this.tryAgain();
+            if (answer.includes(this.hiddenWord)) {
+                this.countClever()
+            } else {
+                this.tryAgain();
+            }
         }
         if (this.i == 3) {
             document.querySelector('.levelCompleted').innerText = "Level Completed😄"

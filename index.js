@@ -332,3 +332,16 @@ submit_Word_in_word.addEventListener("pointerdown", () => {
 changeToPlural.addEventListener("pointerdown", () => {
     singularToPlural.toPlural(document.querySelector(".twoLetters").value);
 });
+
+document.querySelector(".hints").addEventListener("pointerdown", () => {
+    document.querySelector(".hints").classList.remove("show");
+    document.querySelector(".hints").classList.add("closed");
+});
+document.querySelector(".hint").addEventListener("pointerdown", () => {
+    document.querySelector(".hints").classList.add("show");
+    document.querySelector(".hints").classList.remove("closed");
+});
+document.querySelector(".close").addEventListener("pointerdown", () => {
+    document.querySelector(".hints").classList.add("closed");
+    document.querySelector(".hints").classList.remove("show");
+});

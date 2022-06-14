@@ -379,3 +379,47 @@ h3 {
     transform: scale(3);
     display: flex;
 }
+
+.hint {
+    color: rgb(18, 143, 205);
+    text-decoration: underline;
+    font-size: 1.8rem;
+}
+
+.hints {
+    width: 0;
+    position: absolute;
+    top: -1%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: -3;
+    background-color: rgba(0, 0, 0, 0.504);
+}
+
+.show {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+    transition: width 0.8s ease-in-out;
+}
+
+.close {
+    color: white;
+    font-size: 2rem;
+    background-color: rgb(49, 12, 12);
+}
+
+.closed {
+    transition: opacity 0.8s ease-in-out;
+    display: none;
+}
+
+p {
+    font-size: 1.8rem;
+    max-width: 25ch;
+    color: white;
+    line-height: 150%;
+    background-color: black;
+}

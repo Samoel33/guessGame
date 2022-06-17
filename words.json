@@ -194,5 +194,17 @@
         "Swine",
         "Buffalo",
         "Trout"
+    ],
+    "syllables": [
+        "Sunday",
+        "Handbag",
+        "February",
+        "Wednesday",
+        "Cat",
+        "Dringking",
+        "Yesterday"
+    ],
+    "syllablesAnswers": [
+        2, 2, 4, 2, 1, 2, 3
     ]
 }

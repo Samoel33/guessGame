@@ -33,7 +33,7 @@ html {
 
 body {
     background-color: var(--body-color);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .container {
@@ -94,25 +94,13 @@ nav {
 #guessNumber,
 #guessWord,
 #hidden-Words,
-#singularPlural {
+#singularPlural,
+#syllable {
     max-width: 114rem;
     height: 100vh;
     margin: 0 auto;
     background-color: var(--guessing-number);
 }
-
-
-/* 
-.translatedUp {
-    transform: translateY(-110vh);
-    opacity: 0;
-    transition: transform 0.8s ease-in-out;
-}
-
-.translateToView {
-    transform: translateY(-105vh);
-    transition: transform 0.8s ease-in-out;
-} */
 
 h2 {
     padding-top: 3rem;
@@ -252,6 +240,13 @@ label {
     background-color: var(--hidden-word);
 }
 
+#syllable {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .heading-word {
     color: black
 }
@@ -280,7 +275,8 @@ h3 {
 
 #word,
 .wordInWord,
-.twoLetters {
+.twoLetters,
+#numberOfSyllables {
     width: 20rem;
     height: 3.5rem;
     border: 2px solid var(--guessing-number);
@@ -289,7 +285,8 @@ h3 {
 
 #submit-word,
 #submit-word-in-word,
-#submit-letter {
+#submit-letter,
+#submit-number {
     border-radius: 1rem;
     width: 10rem;
     height: 3rem;
@@ -300,9 +297,15 @@ h3 {
     border: 2px solid var(--navigation);
 }
 
+#submit-number {
+    background-color: var(--hidden-word);
+    color: black;
+}
+
 .correct_not,
 .levelCompleted,
-.fail {
+.fail,
+.correctNumber {
     width: 20rem;
     margin: 1rem;
     color: green;
@@ -334,7 +337,8 @@ h3 {
 }
 
 .hiddenWords,
-.letter {
+.letter,
+.hiddenW {
     width: 20%;
     display: flex;
     justify-content: center;
@@ -378,6 +382,12 @@ h3 {
 .big {
     transform: scale(3);
     display: flex;
+}
+
+@media only screen and (max-width:25em) {
+    .big {
+        display: flex;
+    }
 }
 
 .hint {

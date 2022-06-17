@@ -5,11 +5,13 @@ const message = document.querySelector(".fail");
 const submitWord = document.querySelector("#submit-word");
 const submit_Word_in_word = document.querySelector("#submit-word-in-word");
 const changeToPlural = document.querySelector("#submit-letter");
+const submitNumber = document.querySelector("#submit-number");
 const slide = document.querySelectorAll(".slide");
 let guessWord;
 let hideWord;
 let timeOver;
 let singularToPlural;
+let syllableGuess;
 let count = 0;
 
 const completed = document.querySelector(".completed");
@@ -56,6 +58,7 @@ class GuessWord {
             if (this.guessedWords.length == 5) {
                 hideWord = new WordInWord(this.guessedWords.length);
                 this.slideUp();
+                document.querySelector(".level").innerText = 3;
             }
         } else {
             wordCheck.value = "";
@@ -65,7 +68,6 @@ class GuessWord {
     slideUp() {
         this.j -= 100;
         slide.forEach((s, i) => s.style.transform = `translateY(${(this.j)}%)`)
-        console.log(this.j);
     }
     clever() {
         document.querySelector(".correct_not").innerText = "Very Clever 😄";
@@ -98,55 +100,25 @@ class SingularPlural extends GuessWord {
         this.plural = plural
         this.randomNum;
         this.randomNumber1();
+        this.j = -300;
     }
     async randomNumber1() {
         this.randomNum = Math.floor(Math.random() * 5);
         let plural = await this.fetchData();
+        this.plural = plural.singularPlural[this.randomNum];
         document.querySelector('.letter').innerText = plural.singularPlural[this.randomNum];
     }
     toPlural(pluralWord) {
         function reload() {
-            window.location.reload();
+            syllableGuess = new Syllables();
         }
-        this.plural = pluralWord
-        if (this.randomNum == 0 && this.plural === "Sheep") {
+        if (this.plural === pluralWord) {
             this.clever();
-            reload()
-
-        } else {
-            this.betterLuck();
-        }
-        if (this.randomNum == 1 && this.plural === "Fish") {
-            this.clever();
+            this.slideUp();
             reload();
         } else {
             this.betterLuck();
         }
-        if (this.randomNum == 2 && this.plural === "Moose") {
-            this.clever();
-            reload();
-        } else {
-            this.betterLuck();
-        }
-        if (this.randomNum == 3 && this.plural === "Swine") {
-            this.clever();
-            reload();
-        } else {
-            this.betterLuck();
-        }
-        if (this.randomNum == 4 && this.plural === "Buffalo") {
-            this.clever();
-            reload();
-        } else {
-            this.betterLuck();
-        }
-        if (this.randomNum == 5 && this.plural === "Trout") {
-            this.clever();
-            reload();
-        } else {
-            this.betterLuck();
-        }
-
     }
 }
 class WordInWord extends GuessWord {
@@ -203,6 +175,8 @@ class WordInWord extends GuessWord {
             setTimeout(() => {
                 document.querySelector(".levelCompleted").innerText = "";
                 this.slideUp();
+                document.querySelector(".level").innerText = 4;
+
                 singularToPlural = new SingularPlural();
             }, 3000);
 
@@ -215,6 +189,23 @@ class WordInWord extends GuessWord {
             this.randomGenNumber();
 
         }, 1000);
+    }
+}
+
+class Syllables extends GuessWord {
+    constructor(number) {
+        super();
+        this.j = -300;
+        this.number = number
+
+    }
+    async guessSyllabel(numOfSyllabel) {
+
+        let numberOfsyllables = await this.fetchData();
+        let answer = numberOfsyllables.syllablesAnswer;
+
+        console.log(numberOfsyllables, answer);
+
     }
 }
 class GuessNumber {
@@ -328,6 +319,9 @@ submitWord.addEventListener("pointerdown", () => {
 })
 submit_Word_in_word.addEventListener("pointerdown", () => {
     hideWord.giveWordInWord(document.querySelector(".wordInWord").value);
+});
+submitNumber.addEventListener("pointerdown", () => {
+    syllableGuess.guessSyllabel(document.querySelector("#numberOfSyllables").value);
 });
 changeToPlural.addEventListener("pointerdown", () => {
     singularToPlural.toPlural(document.querySelector(".twoLetters").value);

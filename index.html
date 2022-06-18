@@ -18,10 +18,12 @@
             <div class="navigation">
                 <div class="audios">
                     <audio src="./aud/betterLuck.mp3" type="audio/mp3" class="better"></audio>
-                    <audio src="./aud/completed.mp3" type="audio/mp3" class="completed"></audio>
+                    <audio src="./aud/cometed.mp3" type="audio/mp3" class="completed"></audio>
                     <audio src="./aud/guessedIt.mp3" type="audio/mp3" class="guessedIt"></audio>
                     <audio src="./aud/tryAgain.mp3" type="audio/mp3" class="try"></audio>
                     <audio src="./aud/veryClever.mp3" type="audio/mp3" class="clever"></audio>
+                    <audio src="./aud/sonic-rings.wav" type="audio/wav" class="sonic" autoplay></audio>
+                    <audio src="./aud/completed.mp3" type="audio/mp3" class="complete"></audio>
                 </div>
                 <div class="levels">Level: <span class="level">1</span></div>
                 <div class="displayWinLose"></div>
@@ -101,6 +103,7 @@
             <h2 class="heading-word">Change Singular to Plural
                 <span class="emoji">😉</span>
             </h2>
+            <span class="rules">Rule of the level</span>
             <div class="letter ">
 
             </div>
@@ -113,7 +116,8 @@
 
 
         <div class="syllables slide " id="syllable">
-            <h2>Guess the Number of syllabels in the word below🤔</h2>
+            <h2>Guess the Number of syllabels in the word below </h2>
+            <span class="hint1">Dont know Syllables ? check.🤔</span>
             <div class="hiddenW ">
             </div>
             <div class="group-word ">
@@ -123,9 +127,17 @@
             <button id="submit-number">Submit</button>
             <div class="correctNumber"></div>
         </div>
-        <div class="hints ">
+        <div class="hints">
             <div class="close ">X</div>
             <p>Words to guess can be from: Maths Shapes, angel numbers, Numbers and Bible</p>
+        </div>
+        <div class="hints1">
+            <div class="close ">X</div>
+            <p>Syllable: A unit of pronunciation having one vowel sound, with or without surrounding consonant, forming the whole or a part of a word</p>
+        </div>
+        <div class="rule">
+            <div class="close ">X</div>
+            <p>One Plural to guess, If you get it wrong, You loose the Game😁</p>
         </div>
     </div>
     <script src="./index.js "></script>

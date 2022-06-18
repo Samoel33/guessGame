@@ -15,15 +15,28 @@ let syllableGuess;
 let count = 0;
 
 const completed = document.querySelector(".completed");
+const complete = document.querySelector(".complete");
 const guessed = document.querySelector(".guessedIt");
 const tryIt = document.querySelector(".try");
 const clever = document.querySelector(".clever");
 const better = document.querySelector(".better");
+const intro = document.querySelector(".sonic");
 const timeTicking = document.querySelector(".time");
 const chancesDown = document.querySelector('.chances');
 const wordCheck = document.querySelector("#word");
 
+// window.onload = data;
 
+// async function data() {
+//     try {
+//         //  intro.play();
+//         setTimeout(() => {
+//             intro.pause();
+//         }, 1000)
+//         let results = await fetch("https://samoel33.github.io/guessGame/words.json");
+//         syllableGuess = new Syllables()
+//     } catch (e) {}
+// }
 class GuessWord {
     constructor(number, word) {
         this.number = number;
@@ -111,6 +124,7 @@ class SingularPlural extends GuessWord {
     toPlural(pluralWord) {
         function reload() {
             syllableGuess = new Syllables();
+            document.querySelector(".level").innerText = 5;
         }
         if (this.plural === pluralWord) {
             this.clever();
@@ -161,12 +175,15 @@ class WordInWord extends GuessWord {
         ) {
             const nested = arrayAnswers[this.randomNumber];
             if (nested.includes(this.hiddenWord)) {
+                document.querySelector(".wordInWord").value = '';
                 this.countClever();
             }
         } else {
             if (answer.includes(this.hiddenWord)) {
+                document.querySelector(".wordInWord").value = "";
                 this.countClever()
             } else {
+                document.querySelector(".wordInWord").value = "";
                 this.tryAgain();
             }
         }
@@ -196,16 +213,50 @@ class Syllables extends GuessWord {
     constructor(number) {
         super();
         this.j = -300;
-        this.number = number
-
+        this.number = number;
+        this.answer;
+        this.syllablewords;
+        this.showSyllabels();
+        this.counts = 0;
     }
-    async guessSyllabel(numOfSyllabel) {
-
+    async showSyllabels() {
         let numberOfsyllables = await this.fetchData();
-        let answer = numberOfsyllables.syllablesAnswer;
-
-        console.log(numberOfsyllables, answer);
-
+        this.answer = numberOfsyllables.syllablesAnswers;
+        let syllableWords = numberOfsyllables.syllables;
+        this.syllablewords = syllableWords;
+        syllableWords.forEach((wordSyllable) => {
+            const lists = document.createElement("li");
+            const contains = document.querySelector(".hiddenW");
+            lists.innerText = wordSyllable;
+            contains.append(lists);
+        });
+    }
+    guessSyllabel(numOfSyllabel) {
+        let yourAnswer = [];
+        let elements = document.querySelectorAll(".hiddenW li");
+        console.log(elements);
+        yourAnswer.push(numOfSyllabel);
+        const numberEnter = document.querySelector("#numberOfSyllables");
+        if ((this.answer[0] == yourAnswer[0])) {
+            elements[this.counts].style.textDecoration = "line-through";
+            numberEnter.value = "";
+            this.answer.shift();
+            yourAnswer.shift();
+            this.count()
+            this.clever();
+        } else {
+            this.tryAgain();
+        }
+        if (this.answer.length == 0) {
+            completed.play();
+            complete.play();
+            setTimeout(() => {
+                window.location.reload();
+            }, 65000);
+        }
+    }
+    count() {
+        this.counts++;
     }
 }
 class GuessNumber {
@@ -338,4 +389,31 @@ document.querySelector(".hint").addEventListener("pointerdown", () => {
 document.querySelector(".close").addEventListener("pointerdown", () => {
     document.querySelector(".hints").classList.add("closed");
     document.querySelector(".hints").classList.remove("show");
+});
+
+
+document.querySelector(".hints1").addEventListener("pointerdown", () => {
+    document.querySelector(".hints1").classList.remove("show");
+    document.querySelector(".hints1").classList.add("closed");
+});
+document.querySelector(".hint1").addEventListener("pointerdown", () => {
+    document.querySelector(".hints1").classList.add("show");
+    document.querySelector(".hints1").classList.remove("closed");
+});
+document.querySelector(".hints1 .close").addEventListener("pointerdown", () => {
+    document.querySelector(".hints1").classList.add("closed");
+    document.querySelector(".hints1").classList.remove("show");
+});
+
+document.querySelector(".rules").addEventListener("pointerdown", () => {
+    document.querySelector(".rule").classList.remove("show");
+    document.querySelector(".rule").classList.add("closed");
+});
+document.querySelector(".rules").addEventListener("pointerdown", () => {
+    document.querySelector(".rule").classList.add("show");
+    document.querySelector(".rule").classList.remove("closed");
+});
+document.querySelector(".rule .close").addEventListener("pointerdown", () => {
+    document.querySelector(".rule").classList.add("closed");
+    document.querySelector(".rule").classList.remove("show");
 });

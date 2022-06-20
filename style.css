@@ -6,7 +6,7 @@
     --hidden-word: white;
     --body-color: silver;
     --heading-size: 2.5rem;
-    --body-text-size: 1.5rem;
+    --body-text-size: 1.8rem;
     --button-text-size: 1.8rem;
     --hints-text-size: 1.5rem;
 }
@@ -372,6 +372,12 @@ h3 {
     padding: 2rem;
     z-index: 3;
     display: none;
+}
+
+.messageWordRepeat {
+    margin-top: 1.5rem;
+    color: red;
+    font-size: 2rem;
 }
 
 .big {

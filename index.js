@@ -41,6 +41,7 @@ class GuessWord {
     constructor(number, word) {
         this.number = number;
         this.word = word;
+        this.guessedWords = [];
         this.declair();
     }
     declair() {
@@ -62,6 +63,16 @@ class GuessWord {
 
         this.word = word;
         let data = await this.fetchData();
+        if (this.guessedWords.length != 0 && this.guessedWords.includes(this.word)) {
+            document.querySelector('.messageWordRepeat').innerText = "Can no use the word Twice😠";
+            this.tryAgain();
+            wordCheck.value = "";
+            setTimeout(() => {
+                document.querySelector(".messageWordRepeat").innerText =
+                    "";
+            }, 2500);
+            return;
+        }
         if (data.wordsAss[this.number].includes(this.word)) {
             count++;
             this.guessedWords.push(word);
@@ -84,6 +95,7 @@ class GuessWord {
     }
     clever() {
         document.querySelector(".correct_not").innerText = "Very Clever 😄";
+        document.querySelector(".correct_not").style.color = "green";
         clever.play();
         setTimeout(() => {
             document.querySelector(".correct_not").innerText = "";
@@ -92,6 +104,7 @@ class GuessWord {
     }
     tryAgain() {
         document.querySelector(".correct_not").innerText = "Try Again😄";
+        document.querySelector('.correct_not').style.color = 'red';
         tryIt.play();
         setTimeout(() => {
             document.querySelector(".correct_not").innerText = "";
